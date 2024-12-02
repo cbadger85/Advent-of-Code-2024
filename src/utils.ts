@@ -12,8 +12,13 @@
  * // letters = ['a', 'b', 'c']
  */
 export function splitArray<T>(data: Array<[T, T]>): [T[], T[]] {
-  const left = data.map(([left]) => left);
-  const right = data.map(([_, right]) => right);
+  const left: T[] = [];
+  const right: T[] = [];
+
+  for (const [leftItem, rightItem] of data) {
+    left.push(leftItem);
+    right.push(rightItem);
+  }
 
   return [left, right];
 }

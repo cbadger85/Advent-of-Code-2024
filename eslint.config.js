@@ -47,5 +47,5 @@ export default tseslint.config(
     rules: vitest.configs.recommended.rules,
   },
   // files to ignore
-  { ignores: ['coverage/*', 'build/*'] },
+  { ignores: ['dist/*'] },
 );

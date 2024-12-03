@@ -60,3 +60,54 @@ export function countItemsInArray<T>(data: T[]): Map<T, number> {
 export function sum(numbers: number[]): number {
   return numbers.reduce((total, number) => total + number, 0);
 }
+
+/**
+ * Applies a sliding window operation on an array and returns the results.
+ *
+ * @template T - The type of elements in the input array.
+ * @template R - The type of elements in the output array.
+ * @param {T[]} array - The input array to apply the sliding window on.
+ * @param {number} windowSize - The size of the sliding window.
+ * @param {function(T[]): R} cb - The callback function to apply to each window.
+ * @returns {R[]} An array containing the results of applying the callback to each window.
+ *
+ * @example
+ * const numbers = [1, 2, 3, 4, 5];
+ * const result = slidingWindow(numbers, 3, (window) => window.reduce((a, b) => a + b, 0));
+ * // result = [6, 9, 12]
+ */
+export function slidingWindow<T, R>(
+  array: T[],
+  windowSize: number,
+  cb: (arg: T[]) => R,
+): R[] {
+  const results: R[] = [];
+
+  for (let i = 0; i < array.length; i++) {
+    const window = array.slice(i, i + windowSize);
+    results.push(cb(window));
+  }
+
+  return results;
+}
+
+/**
+ * Checks if a value is not null or undefined.
+ *
+ * @template T - The type of the value being checked.
+ * @param {T | null | undefined} value - The value to check.
+ * @returns {boolean} True if the value is not null and not undefined, false otherwise.
+ *
+ * @example
+ * const result1 = isNotNullish(42);
+ * // result1 = true
+ *
+ * const result2 = isNotNullish(null);
+ * // result2 = false
+ *
+ * const result3 = isNotNullish(undefined);
+ * // result3 = false
+ */
+export function isNotNullish<T>(value: T | null | undefined): value is T {
+  return value !== null && value !== undefined;
+}

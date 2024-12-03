@@ -9,8 +9,7 @@
     "lint:ci": "eslint . --max-warnings 0",
     "format": "prettier --write .",
     "format:ci": "prettier --check .",
-    "start": "node --enable-source-maps dist/index.js",
-    "start:local": "tsx watch src/index.ts",
+    "start": "tsx watch src/index.ts",
     "test": "vitest watch",
     "test:ci": "vitest run",
     "typecheck": "tsc --noEmit"

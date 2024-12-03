@@ -2,6 +2,7 @@ import { readFile } from 'fs/promises';
 import path from 'path';
 import * as dayOne from './day-1';
 import * as dayTwo from './day-2';
+import * as dayThree from './day-3';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 
@@ -49,6 +50,28 @@ const dayTwoTotalSafeReportsWithProblemDampener =
 
 console.log(
   `Day Two Total Safe Reports with Problem Dampener: ${dayTwoTotalSafeReportsWithProblemDampener}`,
+);
+
+console.log('\n');
+
+const dayThreeData = await readFile(path.join(DATA_DIR, 'day-3.txt')).then(
+  (data) => data.toString('utf-8'),
+);
+
+console.log('DAY THREE\n---');
+
+const sumOfMultiplyExpressions =
+  dayThree.getSumOfMultiplyExpressions(dayThreeData);
+
+console.log(
+  `Day Three Sum of Multiply Expressions: ${sumOfMultiplyExpressions}`,
+);
+
+const sumOfMultiplyExpressionsWithDosAndDonts =
+  dayThree.getSumOfMultiplyExpressionsWithDosAndDonts(dayThreeData);
+
+console.log(
+  `Day Three Sum of Multiply Expressions with Do's and Don'ts: ${sumOfMultiplyExpressionsWithDosAndDonts}`,
 );
 
 console.log('\n');
